@@ -21,7 +21,10 @@ final class BattlePokemonDetailsViewModel: ObservableObject {
     // MARK: - Init
     init(pokemon: Pokemon) {
         name = pokemon.name
+        currentHP = Float(pokemon.currentHP)
         maxHP = Float(pokemon.maxHP)
+        healthText = "\(pokemon.currentHP) / \(pokemon.maxHP)"
+        
         observeHealth(of: pokemon)
     }
     
@@ -59,14 +62,7 @@ struct BattlePokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         BattlePokemonDetailsView(
             viewModel: BattlePokemonDetailsViewModel(
-                pokemon: Pokemon(
-                    name: "Charmander",
-                    type: .fire,
-                    maxHP: 100,
-                    currentHP: 60,
-                    speed: 30,
-                    moves: []
-                )
+                pokemon: PreviewData.charmander
             )
         )
         .previewLayout(PreviewLayout.sizeThatFits)

@@ -45,7 +45,7 @@ struct BattleMenu: View {
     }
 }
 
-struct BattleMainMenu_Previews: PreviewProvider {
+struct BattleMenu_Previews: PreviewProvider {
     static var previews: some View {
         BattleMenu(
             menu1Title: "Explosion", menu1Action: { print("Explosion") },

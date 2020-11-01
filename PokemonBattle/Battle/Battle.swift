@@ -16,11 +16,14 @@ class Battle {
     let trainer2: PokemonTrainer
     var pokemon1: Pokemon
     var pokemon2: Pokemon
-    var pokemon1MoveID: String?
-    var pokemon2MoveID: String?
+    private var pokemon1MoveID: String?
+    private var pokemon2MoveID: String?
     var pokemon1BattleEffects = [BattleEffect]()
     var pokemon2BattleEffects = [BattleEffect]()
-    var fasterPokemon: Pokemon
+    private var fasterPokemon: Pokemon
+    
+    // MARK: - Dependencies
+    @Dependency private var commentator: Commentator
     
     // MARK: - Init
     init(trainer1: PokemonTrainer, trainer2: PokemonTrainer) {
@@ -43,7 +46,6 @@ extension Battle {
     }
     
     func performRoundStep1()  -> RoundResult {
-        print("\(fasterPokemon.name) attacks first")
         if fasterPokemon == pokemon1 {
             return pokemon1Turn()
         } else {
@@ -66,7 +68,14 @@ extension Battle {
     }
     
     private func pokemon1Turn() -> RoundResult {
-        guard let pokemon1Move = pokemon1.moves.first(where: { $0.id == pokemon1MoveID }) else { fatalError("Pokemon move not found") }
+        guard let pokemon1Move = pokemon1.getMove(withID: pokemon1MoveID!) else { fatalError("Pokemon move not found") }
+        
+        // Commenting
+        var comment = "\(pokemon1.name) used \(pokemon1Move.name)"
+        if pokemon1Move is PokemonAttack {
+            comment += " on \(pokemon2.name)"
+        }
+        commentator.comment(comment)
         
         pokemon1.performMove(pokemon1Move, opponent: pokemon2)
         
@@ -77,7 +86,14 @@ extension Battle {
     }
     
     private func pokemon2Turn() -> RoundResult{
-        guard let pokemon2Move = pokemon2.moves.first(where: { $0.id == pokemon2MoveID }) else { fatalError("Pokemon move not found") }
+        guard let pokemon2Move = pokemon2.getMove(withID: pokemon2MoveID!) else { fatalError("Pokemon move not found") }
+        
+        // Commenting
+        var comment = "\(pokemon2.name) used \(pokemon2Move.name)"
+        if pokemon2Move is PokemonAttack {
+            comment += " on \(pokemon1.name)"
+        }
+        commentator.comment(comment)
         
         pokemon2.performMove(pokemon2Move, opponent: pokemon1)
 

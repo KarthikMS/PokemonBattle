@@ -13,16 +13,10 @@ struct PokemonBattleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            BattlePokemonDetailsView(
-                viewModel: BattlePokemonDetailsViewModel(
-                    pokemon: Pokemon(
-                        name: "Charmander",
-                        type: .fire,
-                        maxHP: 100,
-                        currentHP: 80,
-                        speed: 30,
-                        moves: []
-                    )
+            BattleMainMenu(
+                viewModel: BattleViewModel(
+                    trainer1: PreviewData.ash,
+                    trainer2: PreviewData.gary
                 )
             )
         }

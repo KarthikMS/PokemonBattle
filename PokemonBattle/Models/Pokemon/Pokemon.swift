@@ -44,4 +44,8 @@ extension Pokemon: Equatable {
 // MARK: - Util
 extension Pokemon {
     var isFainted: Bool { currentHP == 0 }
+    
+    func getMove(withID moveID: String) -> PokemonMove? {
+        moves.first(where: { $0.id == moveID })
+    }
 }

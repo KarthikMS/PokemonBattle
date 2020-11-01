@@ -12,6 +12,7 @@ class Pokemon: ObservableObject {
     let id = UUID().uuidString
     var name: String
     var type: ElementType
+    let imageName: String
     @LowerLimit(0) var maxHP: Int
     @Published var currentHP: Int = 0 {
         didSet {
@@ -24,9 +25,10 @@ class Pokemon: ObservableObject {
     @MaxCount(MaxNumberOfPokemonMoves) var moves: [PokemonMove]
     
     // MARK: - Init
-    init(name: String, type: ElementType, maxHP: Int, currentHP: Int, speed: Int, moves: [PokemonMove]) {
+    init(name: String, type: ElementType, imageName: String, maxHP: Int, currentHP: Int, speed: Int, moves: [PokemonMove]) {
         self.name = name
         self.type = type
+        self.imageName = imageName
         self.maxHP = maxHP
         self.currentHP = currentHP
         self.speed = speed

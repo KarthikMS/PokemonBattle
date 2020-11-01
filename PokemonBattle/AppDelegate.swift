@@ -47,6 +47,7 @@ struct PreviewData {
     static let charmander = Pokemon(
         name: "Charmander",
         type: .fire,
+        imageName: "charmander",
         maxHP: 100,
         currentHP: 100,
         speed: 30,
@@ -55,6 +56,7 @@ struct PreviewData {
     static let mudkip = Pokemon(
         name: "Mudkip",
         type: .water,
+        imageName: "mudkip",
         maxHP: 120,
         currentHP: 120,
         speed: 35,

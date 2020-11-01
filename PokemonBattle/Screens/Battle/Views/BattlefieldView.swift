@@ -19,10 +19,10 @@ struct BattlefieldView: View {
                         pokemon: pokemon2
                     )
                 )
-                PokemonView()
+                PokemonView(pokemon: pokemon2)
             }
             HStack {
-                PokemonView()
+                PokemonView(pokemon: pokemon1)
                 BattlePokemonDetailsView(
                     viewModel: BattlePokemonDetailsViewModel(
                         pokemon: pokemon1

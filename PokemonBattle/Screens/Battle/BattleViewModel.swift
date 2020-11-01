@@ -47,30 +47,21 @@ private extension BattleViewModel {
 extension BattleViewModel {
     func performAttack(withID attackID: String) {
         menuMode = .attackAnimation
-        
+
         // TODO: Create AIPokemonTrainer.
         if isOpponentAI {
             
         }
-        let pokemon2MoveID = battle.pokemon2.randomMove.id
+        let pokemon2Move = battle.pokemon2.randomMove
         
         battle.setRoundParams(
             pokemon1MoveID: attackID,
-            pokemon2MoveID: pokemon2MoveID
+            pokemon2MoveID: pokemon2Move.id
         )
-        
-        let move = pokemon1.getMove(withID: attackID)!
-        var message = "\(pokemon1.name) used \(move.name))"
-        
-        if move is PokemonAttack {
-            message += " on \(pokemon2.name)!"
-        }
-        
-        commentary = message
         
         let step1Result = battle.performRoundStep1()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             if step1Result.didTrainer1PokemonFaint {
                 self.commentary = "\(self.pokemon1.name) fainted!"
             }
@@ -78,8 +69,21 @@ extension BattleViewModel {
                 self.commentary = "\(self.pokemon2.name) fainted!"
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.menuMode = .main
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                let step2Result = self.battle.performRoundStep2()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    if step2Result.didTrainer1PokemonFaint {
+                        self.commentary = "\(self.pokemon1.name) fainted!"
+                    }
+                    if step2Result.didTrainer2PokemonFaint {
+                        self.commentary = "\(self.pokemon2.name) fainted!"
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.menuMode = .main
+                    }
+                }
             }
         }
     }

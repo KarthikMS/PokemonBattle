@@ -8,10 +8,10 @@
 import Swinject
 
 @propertyWrapper
-public class Dependency<T> {
-    public let wrappedValue: T
+class Dependency<T> {
+    let wrappedValue: T
     
-    public init(container: Container = dependencyContainer) {
+    init(container: Container = dependencyContainer) {
         wrappedValue = container.resolve(T.self)!
     }
 }

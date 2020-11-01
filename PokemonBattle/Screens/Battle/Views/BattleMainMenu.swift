@@ -20,12 +20,15 @@ struct BattleMainMenu: View {
         GeometryReader { geometry in
             VStack {
                 // TODO: Replace this with BattleView
-                Text("Battle area")
-                    .frame(
-                        width: geometry.size.width,
-                        height: 0.8 * geometry.size.height
-                    )
-                    .background(Color.red)
+                BattlefieldView(
+                    pokemon1: viewModel.pokemon1,
+                    pokemon2: viewModel.pokemon2
+                )
+                .frame(
+                    width: geometry.size.width,
+                    height: 0.8 * geometry.size.height
+                )
+                .background(Color.red)
                 
                 ZStack {
                     Color.green

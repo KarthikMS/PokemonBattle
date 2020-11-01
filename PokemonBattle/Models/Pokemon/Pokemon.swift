@@ -5,15 +5,21 @@
 //  Created by Karthik on 01/11/20.
 //
 
-import Foundation
+import SwiftUI
 
-class Pokemon {
+class Pokemon: ObservableObject {
     // MARK: - Properties
     let id = UUID().uuidString
     var name: String
     var type: ElementType
     @LowerLimit(0) var maxHP: Int
-    @LowerLimit(0) var currentHP: Int
+    @Published var currentHP: Int = 0 {
+        didSet {
+            if currentHP < 0 {
+                currentHP = 0
+            }
+        }
+    }
     @LowerLimit(1) var speed: Int
     @MaxCount(MaxNumberOfPokemonMoves) var moves: [PokemonMove]
     

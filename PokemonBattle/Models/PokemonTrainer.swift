@@ -8,7 +8,7 @@
 class PokemonTrainer {
     // MARK: - Properties
     var name: String
-    @CountConstrained(maxCount: MaxNumberOfPokemon) var pokemons: [Pokemon]
+    @MaxCount(MaxNumberOfPokemon) var pokemons: [Pokemon]
     var battleWins = 0
     var battleLosses = 0
     

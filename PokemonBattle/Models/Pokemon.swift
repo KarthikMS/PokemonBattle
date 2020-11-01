@@ -14,7 +14,7 @@ class Pokemon {
     var type: ElementType
     @LowerLimit(0) var maxHP: Int
     @LowerLimit(0) var currentHP: Int
-    @CountConstrained(maxCount: MaxNumberOfPokemonMoves) var moves: [PokemonMove]
+    @MaxCount(MaxNumberOfPokemonMoves) var moves: [PokemonMove]
     
     // MARK: - Init
     init(name: String, type: ElementType, maxHP: Int, currentHP: Int, moves: [PokemonMove]) {

@@ -1,16 +1,16 @@
 //
-//  CountConstrained.swift
+//  MaxCount.swift
 //  PokemonBattle
 //
 //  Created by Karthik on 01/11/20.
 //
 
 @propertyWrapper
-struct CountConstrained<T> {
+struct MaxCount<T> {
     private var value = [T]()
     let maxCount: Int
     
-    init(maxCount: Int) {
+    init(_ maxCount: Int) {
         self.maxCount = maxCount
     }
     

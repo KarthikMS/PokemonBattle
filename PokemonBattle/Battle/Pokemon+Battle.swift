@@ -6,6 +6,22 @@
 //
 
 extension Pokemon {
+    func battleSpeed(afterApplying effects: [BattleEffect]) -> Int {
+        for effect in effects {
+            switch effect {
+            case let .speedMutation(diff):
+                return speed + diff
+            }
+        }
+        return speed
+    }
+    
+    func performMove(_ move: PokemonMove, opponent: Pokemon) {
+        if let attack = move as? PokemonAttack {
+            self.attack(opponent, using: attack)
+        }
+    }
+    
     func attack(_ opponent: Pokemon, using attack: PokemonAttack) {
         let damage: Int
         
@@ -22,19 +38,6 @@ extension Pokemon {
         
         opponent.currentHP -= damage
     }
-    
-    func performMove(_ move: PokemonMove, opponent: Pokemon) {
-        if let attack = move as? PokemonAttack {
-            self.attack(opponent, using: attack)
-        }
-    }
-}
-
-enum PokemonAttackEffect {
-    case normal
-    case superEffective
-    case notVeryEffective
-    case doesNotAffect
 }
 
 extension PokemonAttack {
@@ -75,3 +78,4 @@ extension PokemonAttack {
         }
     }
 }
+

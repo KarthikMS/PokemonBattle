@@ -36,6 +36,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             type: .fire,
             maxHP: 100,
             currentHP: 100,
+            speed: 30,
             moves: [scratch, ember]
         )
         let mudkip = Pokemon(
@@ -43,6 +44,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             type: .water,
             maxHP: 120,
             currentHP: 120,
+            speed: 35,
             moves: [tackle, waterGun]
         )
         

@@ -14,15 +14,24 @@ class Pokemon {
     var type: ElementType
     @LowerLimit(0) var maxHP: Int
     @LowerLimit(0) var currentHP: Int
+    @LowerLimit(1) var speed: Int
     @MaxCount(MaxNumberOfPokemonMoves) var moves: [PokemonMove]
     
     // MARK: - Init
-    init(name: String, type: ElementType, maxHP: Int, currentHP: Int, moves: [PokemonMove]) {
+    init(name: String, type: ElementType, maxHP: Int, currentHP: Int, speed: Int, moves: [PokemonMove]) {
         self.name = name
         self.type = type
         self.maxHP = maxHP
         self.currentHP = currentHP
+        self.speed = speed
         self.moves = moves
+    }
+}
+
+// MARK: - Equatable
+extension Pokemon: Equatable {
+    static func == (lhs: Pokemon, rhs: Pokemon) -> Bool {
+        lhs.id == rhs.id
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  BattleMainMenu.swift
+//  BattleMenu.swift
 //  PokemonBattle
 //
 //  Created by Karthik on 01/11/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BattleMainMenu: View {
+struct BattleMenu: View {
     let menu1Title: String
     let menu1Action: () -> Void
     
@@ -47,7 +47,7 @@ struct BattleMainMenu: View {
 
 struct BattleMainMenu_Previews: PreviewProvider {
     static var previews: some View {
-        BattleMainMenu(
+        BattleMenu(
             menu1Title: "Explosion", menu1Action: { print("Explosion") },
             menu2Title: "Thunderbolt", menu2Action: { print("Thunderbolt") },
             menu3Title: "Thunder Wave", menu3Action: { print("Thunder Wave") },

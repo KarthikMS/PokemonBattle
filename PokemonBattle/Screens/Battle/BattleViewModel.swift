@@ -33,6 +33,9 @@ final class BattleViewModel: ObservableObject {
         
         listenToCommentator()
     }
+    
+    // MARK: - Temp
+    private let UserMessageReadTimeDuration = 1.5
 }
 
 // MARK: - Setup
@@ -61,18 +64,15 @@ extension BattleViewModel {
         
         let step1Result = battle.performRoundStep1()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-            if step1Result.didTrainer1PokemonFaint {
-                self.commentary = "\(self.pokemon1.name) fainted!"
-            }
-            if step1Result.didTrainer2PokemonFaint {
-                self.commentary = "\(self.pokemon2.name) fainted!"
+        DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
+            if self.didPokemonFaint(stepResult: step1Result) {
+                return
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + self.UserMessageReadTimeDuration) {
                 let step2Result = self.battle.performRoundStep2()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + self.UserMessageReadTimeDuration) {
                     if step2Result.didTrainer1PokemonFaint {
                         self.commentary = "\(self.pokemon1.name) fainted!"
                     }
@@ -86,6 +86,19 @@ extension BattleViewModel {
                 }
             }
         }
+    }
+    
+    /// Returns shouldContinue
+    private func didPokemonFaint(stepResult: RoundResult) -> Bool {
+        if stepResult.didTrainer1PokemonFaint {
+            commentary = "\(pokemon1.name) fainted!"
+            return true
+        }
+        if stepResult.didTrainer2PokemonFaint {
+            commentary = "\(pokemon2.name) fainted!"
+            return true
+        }
+        return false
     }
 }
 

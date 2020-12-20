@@ -9,8 +9,8 @@ import SwiftUI
 
 struct BattleMainMenu: View {
     enum Mode {
-        case main
-        case attack
+        case mainMenu
+        case attackMenu
         case attackAnimation
     }
     
@@ -22,7 +22,8 @@ struct BattleMainMenu: View {
                 // TODO: Replace this with BattleView
                 BattlefieldView(
                     pokemon1: viewModel.pokemon1,
-                    pokemon2: viewModel.pokemon2
+                    pokemon2: viewModel.pokemon2,
+                    viewModel: viewModel
                 )
                 .frame(
                     width: geometry.size.width,
@@ -33,10 +34,10 @@ struct BattleMainMenu: View {
                 ZStack {
                     Color.green
                     
-                    if viewModel.menuMode == .main {
+                    if viewModel.menuMode == .mainMenu {
                         BattleMenu(
                             menu1Title: "Attack",
-                            menu1Action: { self.viewModel.menuMode = .attack },
+                            menu1Action: { self.viewModel.menuMode = .attackMenu },
                             menu2Title: "Bag",
                             menu2Action: { print("Bag") },
                             menu3Title: "Pokemon",
@@ -46,14 +47,14 @@ struct BattleMainMenu: View {
                         )
                     }
                     
-                    if viewModel.menuMode == .attack {
+                    if viewModel.menuMode == .attackMenu {
                         VStack {
                             PokemonAttackMenu(
                                 pokemon: viewModel.pokemon1,
                                 viewModel: viewModel
                             )
                             Button("Back") {
-                                self.viewModel.menuMode = .main
+                                self.viewModel.menuMode = .mainMenu
                             }
                             .foregroundColor(.red)
                         }

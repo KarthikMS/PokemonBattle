@@ -18,8 +18,10 @@ final class BattleViewModel: ObservableObject {
     var pokemon2: Pokemon { battle.pokemon2 }
     
     // MARK: - Published
-    @Published var menuMode: BattleMainMenu.Mode = .main
+    @Published var menuMode: BattleMainMenu.Mode = .mainMenu
     @Published var commentary = ""
+    @Published var pokemon1FaintedAnimationEnabled = false
+    @Published var pokemon2FaintedAnimationEnabled = false
     
     // MARK: - Dependencies
     private let battle: Battle
@@ -81,21 +83,24 @@ extension BattleViewModel {
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        self.menuMode = .main
+                        self.menuMode = .mainMenu
                     }
                 }
             }
         }
     }
     
+    // TODO: Remove side-effects from this function.
     /// Returns shouldContinue
     private func didPokemonFaint(stepResult: RoundResult) -> Bool {
         if stepResult.didTrainer1PokemonFaint {
             commentary = "\(pokemon1.name) fainted!"
+            pokemon1FaintedAnimationEnabled = true
             return true
         }
         if stepResult.didTrainer2PokemonFaint {
             commentary = "\(pokemon2.name) fainted!"
+            pokemon2FaintedAnimationEnabled = true
             return true
         }
         return false

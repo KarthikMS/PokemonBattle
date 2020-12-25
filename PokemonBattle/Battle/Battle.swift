@@ -5,6 +5,11 @@
 //  Created by Karthik on 01/11/20.
 //
 
+struct RoundDetails {
+    let attackingPokemon: Pokemon
+    let defendingPokemon: Pokemon
+}
+
 struct RoundResult {
     let didTrainer1PokemonFaint: Bool
     let didTrainer2PokemonFaint: Bool
@@ -45,6 +50,14 @@ extension Battle {
         self.pokemon2MoveID = pokemon2MoveID
     }
     
+    func prepareForRound1() -> RoundDetails {
+        fasterPokemon = getFasterPokemon()
+        return RoundDetails(
+            attackingPokemon: fasterPokemon,
+            defendingPokemon: (fasterPokemon == pokemon1) ? pokemon2 : pokemon1
+        )
+    }
+    
     func performRoundStep1()  -> RoundResult {
         if fasterPokemon == pokemon1 {
             return pokemon1Turn()
@@ -60,9 +73,6 @@ extension Battle {
         } else {
             roundResult = pokemon1Turn()
         }
-        
-        // Setting fasterPokemon after applying current round effects
-        fasterPokemon = getFasterPokemon()
         
         return roundResult
     }

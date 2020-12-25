@@ -32,6 +32,8 @@
 		253DB8D1254E9BA2006A41AF /* ArrayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253DB8D0254E9BA2006A41AF /* ArrayUtil.swift */; };
 		253DB8D5254E9E6B006A41AF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253DB8D4254E9E6B006A41AF /* Constants.swift */; };
 		255BFC4F254EA04C00A5CDB6 /* Pokemon+Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255BFC4E254EA04C00A5CDB6 /* Pokemon+Battle.swift */; };
+		25B094102595BDCC00C47477 /* CommentaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B0940F2595BDCC00C47477 /* CommentaryView.swift */; };
+		25B094132595F50100C47477 /* PokemonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B094122595F50100C47477 /* PokemonAnimation.swift */; };
 		F7014A7837FE58C388234FA2 /* Pods_PokemonBattle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6644F8A04B9E00273E08768B /* Pods_PokemonBattle.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,8 @@
 		253DB8D0254E9BA2006A41AF /* ArrayUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayUtil.swift; sourceTree = "<group>"; };
 		253DB8D4254E9E6B006A41AF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		255BFC4E254EA04C00A5CDB6 /* Pokemon+Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Pokemon+Battle.swift"; sourceTree = "<group>"; };
+		25B0940F2595BDCC00C47477 /* CommentaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentaryView.swift; sourceTree = "<group>"; };
+		25B094122595F50100C47477 /* PokemonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAnimation.swift; sourceTree = "<group>"; };
 		30F409759DCF4F0B0D2385D1 /* Pods-PokemonBattle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonBattle.release.xcconfig"; path = "Target Support Files/Pods-PokemonBattle/Pods-PokemonBattle.release.xcconfig"; sourceTree = "<group>"; };
 		6644F8A04B9E00273E08768B /* Pods_PokemonBattle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokemonBattle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67EFBB3685CA09EDD44CB534 /* Pods-PokemonBattle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokemonBattle.debug.xcconfig"; path = "Target Support Files/Pods-PokemonBattle/Pods-PokemonBattle.debug.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 				25089D85254EDBC100FAC245 /* Views */,
 				25089D95254F0C5F00FAC245 /* BattleViewModel.swift */,
 				25089D98254F32F600FAC245 /* Commentator.swift */,
+				25B094122595F50100C47477 /* PokemonAnimation.swift */,
 			);
 			path = Battle;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				25089D92254F08D000FAC245 /* PokemonAttackMenu.swift */,
 				25089DA3254F371300FAC245 /* BattlefieldView.swift */,
 				25089DA6254F374500FAC245 /* PokemonView.swift */,
+				25B0940F2595BDCC00C47477 /* CommentaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -374,9 +380,11 @@
 				253DB8A8254E9739006A41AF /* PokemonBattleApp.swift in Sources */,
 				25089D8C254EFD6A00FAC245 /* BattleMenu.swift in Sources */,
 				253DB8D1254E9BA2006A41AF /* ArrayUtil.swift in Sources */,
+				25B094102595BDCC00C47477 /* CommentaryView.swift in Sources */,
 				253DB8D5254E9E6B006A41AF /* Constants.swift in Sources */,
 				253DB8C0254E97FA006A41AF /* PokemonMove.swift in Sources */,
 				25089D74254EA91E00FAC245 /* AppDelegate.swift in Sources */,
+				25B094132595F50100C47477 /* PokemonAnimation.swift in Sources */,
 				25089D9E254F347600FAC245 /* Dependency.swift in Sources */,
 				253DB8CD254E9ACC006A41AF /* PokemonTrainer.swift in Sources */,
 				255BFC4F254EA04C00A5CDB6 /* Pokemon+Battle.swift in Sources */,

@@ -23,11 +23,13 @@ struct BattlefieldView: View {
                 PokemonView(pokemon: pokemon2)
                     .opacity(viewModel.pokemon2FaintedAnimationEnabled ? 0 : 1)
                     .animation(viewModel.pokemon2FaintedAnimationEnabled ? .default : .none)
+                    .modifier(PokemonAnimationViewModifier(pokemonAnimation: viewModel.pokemon2Animation))
             }
             HStack {
                 PokemonView(pokemon: pokemon1)
                     .opacity(viewModel.pokemon1FaintedAnimationEnabled ? 0 : 1)
                     .animation(viewModel.pokemon1FaintedAnimationEnabled ? .default : .none)
+                    .modifier(PokemonAnimationViewModifier(pokemonAnimation: viewModel.pokemon1Animation))
                 BattlePokemonDetailsView(
                     viewModel: BattlePokemonDetailsViewModel(
                         pokemon: pokemon1

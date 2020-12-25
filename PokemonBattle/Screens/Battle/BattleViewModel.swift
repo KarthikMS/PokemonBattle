@@ -7,11 +7,31 @@
 
 import SwiftUI
 
+// MARK: - Consants
+let PokemonAttackSingleAnimationDuration: Double = 0.2
+let PokemonAttackAnimationCount = 4
+let PokemonAttackAnimationDuration: Double = Double(PokemonAttackAnimationCount) * PokemonAttackSingleAnimationDuration
+
 final class BattleViewModel: ObservableObject {
+    
+    enum RoundStep {
+        case awaitSummon
+        case firstPokemonSummon
+        case secondPokemonSummon
+        case awaitInstructions
+        case firstPokemonAttack
+        case secondPokemonDamage
+        case secondPokemonAttack
+        case firstPokemonDamage
+        case firstPokemonFaint
+        case secondPokemonFaint
+    }
+    
     // MARK: - Properties
     private let trainer1: PokemonTrainer
     private let trainer2: PokemonTrainer
     private let isOpponentAI = true
+    private var roundStep: RoundStep = .awaitInstructions//.awaitSummon
     
     // TODO: Check if changes need to be tracked.
     var pokemon1: Pokemon { battle.pokemon1 }
@@ -22,6 +42,8 @@ final class BattleViewModel: ObservableObject {
     @Published var commentary = ""
     @Published var pokemon1FaintedAnimationEnabled = false
     @Published var pokemon2FaintedAnimationEnabled = false
+    @Published var pokemon1Animation: PokemonAnimation = .idle
+    @Published var pokemon2Animation: PokemonAnimation = .idle
     
     // MARK: - Dependencies
     private let battle: Battle
@@ -64,6 +86,31 @@ extension BattleViewModel {
             pokemon2MoveID: pokemon2Move.id
         )
         
+        // 1. Which pokemon is going to do what?
+        // 2. attacking pokemon animation
+        // 3. defending pokemon damage
+        // 4. Check faints
+        // 5. small pause
+        // 6. other pokemon attack animation
+        // 7. defending pokemon damange
+        // 8. Check faints
+        
+        // 1.
+        let round1Details = battle.prepareForRound1()
+        if round1Details.attackingPokemon == pokemon1 {
+            pokemon1Animation = .attack
+        } else {
+            pokemon2Animation = .attack
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + PokemonAttackAnimationDuration) {
+            if round1Details.attackingPokemon == self.pokemon1 {
+                self.pokemon1Animation = .idle
+            } else {
+                self.pokemon2Animation = .idle
+            }
+        }
+        
+        // 2.
         let step1Result = battle.performRoundStep1()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {

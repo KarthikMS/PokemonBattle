@@ -67,7 +67,7 @@ extension BattleViewModel {
         let step1Result = battle.performRoundStep1()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
-            if self.didPokemonFaint(stepResult: step1Result) {
+            if self.processRoundResult(stepResult: step1Result) {
                 return
             }
             
@@ -75,11 +75,8 @@ extension BattleViewModel {
                 let step2Result = self.battle.performRoundStep2()
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + self.UserMessageReadTimeDuration) {
-                    if step2Result.didTrainer1PokemonFaint {
-                        self.commentary = "\(self.pokemon1.name) fainted!"
-                    }
-                    if step2Result.didTrainer2PokemonFaint {
-                        self.commentary = "\(self.pokemon2.name) fainted!"
+                    if self.processRoundResult(stepResult: step2Result) {
+                        return
                     }
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -92,18 +89,19 @@ extension BattleViewModel {
     
     // TODO: Remove side-effects from this function.
     /// Returns shouldContinue
-    private func didPokemonFaint(stepResult: RoundResult) -> Bool {
+    private func processRoundResult(stepResult: RoundResult) -> Bool {
+        var didPokemonFaint = false
         if stepResult.didTrainer1PokemonFaint {
             commentary = "\(pokemon1.name) fainted!"
             pokemon1FaintedAnimationEnabled = true
-            return true
+            didPokemonFaint = true
         }
         if stepResult.didTrainer2PokemonFaint {
             commentary = "\(pokemon2.name) fainted!"
             pokemon2FaintedAnimationEnabled = true
-            return true
+            didPokemonFaint = true
         }
-        return false
+        return didPokemonFaint
     }
 }
 

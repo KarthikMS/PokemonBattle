@@ -42,6 +42,7 @@ final class BattlePokemonDetailsViewModel: ObservableObject {
 
 struct BattlePokemonDetailsView: View {
     @ObservedObject var viewModel: BattlePokemonDetailsViewModel
+    @State private var hasSummoned = false
     
     var body: some View {
         VStack {
@@ -50,10 +51,14 @@ struct BattlePokemonDetailsView: View {
             HStack {
                 Text("HP")
                 ProgressView(value: viewModel.currentHP, total: viewModel.maxHP)
+                    .animation(hasSummoned ? .linear : .none)
             }
             .padding(.trailing, 10)
             
             Text(viewModel.healthText)
+        }
+        .onAppear {
+            hasSummoned = true
         }
     }
 }

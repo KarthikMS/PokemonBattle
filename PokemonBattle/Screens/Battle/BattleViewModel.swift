@@ -92,12 +92,12 @@ extension BattleViewModel {
     private func processRoundResult(stepResult: RoundResult) -> Bool {
         var didPokemonFaint = false
         if stepResult.didTrainer1PokemonFaint {
-            commentary = "\(pokemon1.name) fainted!"
+            commentator.comment("\(pokemon1.name) fainted!")
             pokemon1FaintedAnimationEnabled = true
             didPokemonFaint = true
         }
         if stepResult.didTrainer2PokemonFaint {
-            commentary = "\(pokemon2.name) fainted!"
+            commentator.comment("\(pokemon2.name) fainted!")
             pokemon2FaintedAnimationEnabled = true
             didPokemonFaint = true
         }

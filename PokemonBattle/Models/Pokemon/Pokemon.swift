@@ -43,6 +43,9 @@ extension Pokemon: Equatable {
     }
 }
 
+// MARK: - Identifiable
+extension Pokemon: Identifiable {}
+
 // MARK: - Util
 extension Pokemon {
     var isFainted: Bool { currentHP == 0 }

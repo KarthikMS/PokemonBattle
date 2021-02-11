@@ -13,12 +13,7 @@ struct PokemonBattleApp: App {
     
     var body: some Scene {
         WindowGroup {
-            BattleMainMenu(
-                viewModel: BattleViewModel(
-                    trainer1: PreviewData.ash,
-                    trainer2: PreviewData.gary
-                )
-            )
+            PokemonSelectionView(viewModel: PokemonSelectionViewModel())
         }
     }
 }

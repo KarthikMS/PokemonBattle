@@ -67,7 +67,7 @@ struct BattlePokemonDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         BattlePokemonDetailsView(
             viewModel: BattlePokemonDetailsViewModel(
-                pokemon: PreviewData.charmander
+                pokemon: StarterPokemon.charmander
             )
         )
         .previewLayout(PreviewLayout.sizeThatFits)

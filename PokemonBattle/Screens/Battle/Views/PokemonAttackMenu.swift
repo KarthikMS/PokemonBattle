@@ -50,7 +50,7 @@ struct PokemonAttackMenu: View {
 struct PokemonAttackMenu_Previews: PreviewProvider {
     static var previews: some View {
         return PokemonAttackMenu(
-            pokemon: PreviewData.charmander,
+            pokemon: StarterPokemon.charmander,
             viewModel: BattleViewModel(
                 trainer1: PreviewData.ash,
                 trainer2: PreviewData.gary

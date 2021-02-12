@@ -24,7 +24,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
-struct PreviewData {
+struct StarterPokemon {
     static let scratch = PokemonAttack(
         name: "Scratch",
         damage: 20,
@@ -45,6 +45,11 @@ struct PreviewData {
         damage: 30,
         elementType: .water
     )
+    static let leafAttack = PokemonAttack(
+        name: "Leaf Attack",
+        damage: 25,
+        elementType: .grass
+    )
     
     static let charmander = Pokemon(
         name: "Charmander",
@@ -64,7 +69,18 @@ struct PreviewData {
         speed: 35,
         moves: [tackle, waterGun]
     )
-    
-    static let ash = PokemonTrainer(name: "Ash", pokemons: [charmander])
-    static let gary = PokemonTrainer(name: "Gary", pokemons: [mudkip])
+    static let bulbasaur = Pokemon(
+        name: "Bulbasaur",
+        type: .grass,
+        imageName: "bulbasaur",
+        maxHP: 150,
+        currentHP: 150,
+        speed: 27,
+        moves: [tackle, leafAttack]
+    )
+}
+
+struct PreviewData {
+    static let ash = PokemonTrainer(name: "Ash", pokemons: [StarterPokemon.charmander])
+    static let gary = PokemonTrainer(name: "Gary", pokemons: [StarterPokemon.mudkip])
 }

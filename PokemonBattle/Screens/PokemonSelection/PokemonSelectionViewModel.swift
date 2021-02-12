@@ -9,8 +9,9 @@ import SwiftUI
 
 final class PokemonSelectionViewModel: ObservableObject {
     var pokemons = [
-        PreviewData.charmander,
-        PreviewData.mudkip
+        StarterPokemon.charmander,
+        StarterPokemon.mudkip,
+        StarterPokemon.bulbasaur
     ]
     
     func getPokemonTrainerWithPokemon(_ pokemon: Pokemon) -> PokemonTrainer {

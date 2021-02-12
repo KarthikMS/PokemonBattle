@@ -12,11 +12,12 @@ struct PokemonView: View {
     
     var body: some View {
         Image(pokemon.imageName)
+            .resizable()
     }
 }
 
 struct PokemonView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonView(pokemon: PreviewData.charmander)
+        PokemonView(pokemon: StarterPokemon.charmander)
     }
 }

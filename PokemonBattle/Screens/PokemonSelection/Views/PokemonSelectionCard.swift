@@ -13,6 +13,8 @@ struct PokemonSelectionCard: View {
     var body: some View {
         HStack {
             Image(pokemon.imageName)
+                .resizable()
+                .frame(width: 50, height: 50)
             Text(pokemon.name)
                 .foregroundColor(.white)
                 .font(.title)
@@ -22,6 +24,6 @@ struct PokemonSelectionCard: View {
 
 struct PokemonSelectionCard_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonSelectionCard(pokemon: PreviewData.charmander)
+        PokemonSelectionCard(pokemon: StarterPokemon.charmander)
     }
 }

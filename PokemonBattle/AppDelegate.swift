@@ -19,6 +19,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     private func registerDependencies() {
         dependencyContainer.register(Commentator.self, factory: { _ in TextCommentator() })
             .inObjectScope(.container)
+        dependencyContainer.register(Pokeutil.self, factory: { _ in PokeUtil() })
+            .inObjectScope(.container)
     }
 }
 

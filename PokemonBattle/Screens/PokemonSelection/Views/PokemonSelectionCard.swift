@@ -14,6 +14,8 @@ struct PokemonSelectionCard: View {
         HStack {
             Image(pokemon.imageName)
             Text(pokemon.name)
+                .foregroundColor(.white)
+                .font(.title)
         }
     }
 }

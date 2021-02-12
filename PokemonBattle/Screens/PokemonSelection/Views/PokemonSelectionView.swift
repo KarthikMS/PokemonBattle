@@ -9,22 +9,30 @@ import SwiftUI
 
 struct PokemonSelectionView: View {
     @ObservedObject var viewModel: PokemonSelectionViewModel
+    @Dependency var pokeUtil: Pokeutil
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(viewModel.pokemons) { pokemon in
-                    NavigationLink(
-                        destination: BattleMainMenu(
-                            viewModel: BattleViewModel(
-                                trainer1: viewModel.getPokemonTrainerWithPokemon(pokemon),
-                                trainer2: viewModel.getPokemonTrainerWithPokemonOtherThan(pokemon)
-                            )),
-                        label: {
-                            PokemonSelectionCard(pokemon: pokemon)
-                        })
+            VStack {
+                Text("Choose your pokemon")
+                    .font(.headline)
+                List {
+                    ForEach(viewModel.pokemons) { pokemon in
+                        NavigationLink(
+                            destination: BattleMainMenu(
+                                viewModel: BattleViewModel(
+                                    trainer1: viewModel.getPokemonTrainerWithPokemon(pokemon),
+                                    trainer2: viewModel.getPokemonTrainerWithPokemonOtherThan(pokemon)
+                                )),
+                            label: {
+                                PokemonSelectionCard(pokemon: pokemon)
+                            }
+                        )
+                        .background(Color(pokeUtil.getThemeColor(for: pokemon.type)))
+                    }
                 }
             }
+            .background(Color.yellow)
         }
     }
 }

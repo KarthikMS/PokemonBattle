@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 // MARK: - Consants
 let PokemonAttackSingleAnimationDuration: Double = 0.2
@@ -33,17 +34,24 @@ final class BattleViewModel: ObservableObject {
     private let isOpponentAI = true
     private var roundStep: RoundStep = .awaitInstructions//.awaitSummon
     
+    // Commentary
+    private var commentaryTimer: Timer?
+    private var fullComment = ""
+    private var commentaryCharIndex = 0
+    
+    private var cancellables = Set<AnyCancellable>()
+    
     // TODO: Check if changes need to be tracked.
     var pokemon1: Pokemon { battle.pokemon1 }
     var pokemon2: Pokemon { battle.pokemon2 }
     
     // MARK: - Published
     @Published var menuMode: BattleMainMenu.Mode = .mainMenu
-    @Published var commentary = ""
     @Published var pokemon1FaintedAnimationEnabled = false
     @Published var pokemon2FaintedAnimationEnabled = false
     @Published var pokemon1Animation: PokemonAnimation = .idle
     @Published var pokemon2Animation: PokemonAnimation = .idle
+    @Published var commentaryDisplayText = ""
     
     // MARK: - Dependencies
     private let battle: Battle
@@ -62,11 +70,40 @@ final class BattleViewModel: ObservableObject {
     private let UserMessageReadTimeDuration = 1.5
 }
 
-// MARK: - Setup
+// MARK: - Commentary
 private extension BattleViewModel {
     func listenToCommentator() {
         commentator.commentStream
-            .assign(to: &$commentary)
+            .sink { comment in
+                self.showAnimatedComment(comment)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func showAnimatedComment(_ comment: String) {
+        self.fullComment = comment
+        
+        resetCommentary()
+        
+        commentaryTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            
+            guard self.commentaryCharIndex < self.fullComment.count else {
+                self.resetCommentary()
+                return
+            }
+            let index = String.Index(utf16Offset: self.commentaryCharIndex, in: self.fullComment)
+            DispatchQueue.main.async {
+                self.commentaryDisplayText = String(self.fullComment[self.fullComment.startIndex...index])
+            }
+            self.commentaryCharIndex += 1
+        }
+        commentaryTimer?.fire()
+    }
+    
+    func resetCommentary() {
+        commentaryTimer?.invalidate()
+        commentaryCharIndex = 0
     }
 }
 
@@ -112,6 +149,7 @@ extension BattleViewModel {
         
         // 2.
         let step1Result = battle.performRoundStep1()
+        menuMode = .attackAnimation
         
         DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
             if self.processRoundResult(stepResult: step1Result) {

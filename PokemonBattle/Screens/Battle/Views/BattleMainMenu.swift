@@ -61,8 +61,7 @@ struct BattleMainMenu: View {
                     }
                     
                     if viewModel.menuMode == .attackAnimation {
-//                        Text(viewModel.commentary)
-                        CommentaryView(message: viewModel.commentary)
+                        CommentaryView(comment: $viewModel.commentaryDisplayText)
                     }
                 }
             }

@@ -35,6 +35,7 @@
 		25B094102595BDCC00C47477 /* CommentaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B0940F2595BDCC00C47477 /* CommentaryView.swift */; };
 		25B094132595F50100C47477 /* PokemonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B094122595F50100C47477 /* PokemonAnimation.swift */; };
 		25D20E8525D6AA2F00B6704D /* PokeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D20E8425D6AA2F00B6704D /* PokeUtil.swift */; };
+		25DCCDB925D7F41E00412D56 /* BattleOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCCDB825D7F41E00412D56 /* BattleOverView.swift */; };
 		25EFA21925D5A171002900A0 /* PokemonSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EFA21825D5A171002900A0 /* PokemonSelectionView.swift */; };
 		25EFA21C25D5A24F002900A0 /* PokemonSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EFA21B25D5A24F002900A0 /* PokemonSelectionViewModel.swift */; };
 		25EFA22025D5A31F002900A0 /* PokemonSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EFA21F25D5A31F002900A0 /* PokemonSelectionCard.swift */; };
@@ -72,6 +73,7 @@
 		25B0940F2595BDCC00C47477 /* CommentaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentaryView.swift; sourceTree = "<group>"; };
 		25B094122595F50100C47477 /* PokemonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAnimation.swift; sourceTree = "<group>"; };
 		25D20E8425D6AA2F00B6704D /* PokeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeUtil.swift; sourceTree = "<group>"; };
+		25DCCDB825D7F41E00412D56 /* BattleOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleOverView.swift; sourceTree = "<group>"; };
 		25EFA21825D5A171002900A0 /* PokemonSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectionView.swift; sourceTree = "<group>"; };
 		25EFA21B25D5A24F002900A0 /* PokemonSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectionViewModel.swift; sourceTree = "<group>"; };
 		25EFA21F25D5A31F002900A0 /* PokemonSelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectionCard.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				25089DA3254F371300FAC245 /* BattlefieldView.swift */,
 				25089DA6254F374500FAC245 /* PokemonView.swift */,
 				25B0940F2595BDCC00C47477 /* CommentaryView.swift */,
+				25DCCDB825D7F41E00412D56 /* BattleOverView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				25089D99254F32F600FAC245 /* Commentator.swift in Sources */,
 				253DB8A8254E9739006A41AF /* PokemonBattleApp.swift in Sources */,
 				25EFA21925D5A171002900A0 /* PokemonSelectionView.swift in Sources */,
+				25DCCDB925D7F41E00412D56 /* BattleOverView.swift in Sources */,
 				25089D8C254EFD6A00FAC245 /* BattleMenu.swift in Sources */,
 				253DB8D1254E9BA2006A41AF /* ArrayUtil.swift in Sources */,
 				25B094102595BDCC00C47477 /* CommentaryView.swift in Sources */,

@@ -18,52 +18,67 @@ struct BattleMainMenu: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
-                // TODO: Replace this with BattleView
-                BattlefieldView(
-                    pokemon1: viewModel.pokemon1,
-                    pokemon2: viewModel.pokemon2,
-                    viewModel: viewModel
-                )
-                .frame(
-                    width: geometry.size.width,
-                    height: 0.8 * geometry.size.height
-                )
-                .background(Color.red)
-                
-                ZStack {
-                    Color.green
+            ZStack(alignment: .center) {
+                VStack {
+                    // TODO: Replace this with BattleView
+                    BattlefieldView(
+                        pokemon1: viewModel.pokemon1,
+                        pokemon2: viewModel.pokemon2,
+                        viewModel: viewModel
+                    )
+                    .frame(
+                        width: geometry.size.width,
+                        height: 0.8 * geometry.size.height
+                    )
+                    .background(Color.red)
                     
-                    if viewModel.menuMode == .mainMenu {
-                        BattleMenu(
-                            menu1Title: "Attack",
-                            menu1Action: { self.viewModel.menuMode = .attackMenu },
-                            menu2Title: "Bag",
-                            menu2Action: { print("Bag") },
-                            menu3Title: "Pokemon",
-                            menu3Action: { print("Pokemon") },
-                            menu4Title: "Run",
-                            menu4Action: { print("Run") }
-                        )
-                    }
-                    
-                    if viewModel.menuMode == .attackMenu {
-                        VStack {
-                            PokemonAttackMenu(
-                                pokemon: viewModel.pokemon1,
-                                viewModel: viewModel
+                    ZStack {
+                        Color.green
+                        
+                        if viewModel.menuMode == .mainMenu {
+                            BattleMenu(
+                                menu1Title: "Attack",
+                                menu1Action: { self.viewModel.menuMode = .attackMenu },
+                                menu2Title: "Bag",
+                                menu2Action: { print("Bag") },
+                                menu3Title: "Pokemon",
+                                menu3Action: { print("Pokemon") },
+                                menu4Title: "Run",
+                                menu4Action: { print("Run") }
                             )
-                            Button("Back") {
-                                self.viewModel.menuMode = .mainMenu
+                        }
+                        
+                        if viewModel.menuMode == .attackMenu {
+                            VStack {
+                                PokemonAttackMenu(
+                                    pokemon: viewModel.pokemon1,
+                                    viewModel: viewModel
+                                )
+                                Button("Back") {
+                                    self.viewModel.menuMode = .mainMenu
+                                }
+                                .foregroundColor(.red)
                             }
-                            .foregroundColor(.red)
+                        }
+                        
+                        if viewModel.menuMode == .attackAnimation {
+                            CommentaryView(comment: $viewModel.commentaryDisplayText)
                         }
                     }
-                    
-                    if viewModel.menuMode == .attackAnimation {
-                        CommentaryView(comment: $viewModel.commentaryDisplayText)
-                    }
                 }
+                BattleOverView(
+                    text: "You won!",
+                    button1Text: "Play again",
+                    button2Text: "Choose different pokemon",
+                    button1Action: {
+                        print("Button 1 pressed")
+                    },
+                    button2Action: {
+                        print("Button 2 pressed")
+                    }
+                )
+                // TODO: Fix offset condition
+                .offset(x: 0, y: viewModel.menuMode == .attackMenu ? 0 : geometry.size.height)
             }
         }
     }

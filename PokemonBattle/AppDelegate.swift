@@ -21,6 +21,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .inObjectScope(.container)
         dependencyContainer.register(Pokeutil.self, factory: { _ in PokeUtil() })
             .inObjectScope(.container)
+        dependencyContainer.register(PokeCenter.self, factory: { _ in PokemonCenter() })
+            .inObjectScope(.container)
     }
 }
 

@@ -72,10 +72,10 @@ struct BattleMainMenu: View {
                     button1Text: viewModel.battleOverViewButton1Text,
                     button2Text: "Choose different pokemon",
                     button1Action: {
-                        print("Button 1 pressed")
+                        viewModel.replayButtonPressed()
                     },
                     button2Action: {
-                        print("Button 2 pressed")
+                        viewModel.chooseNewPokemonButtonPressed()
                     }
                 )
                 .offset(x: 0, y: viewModel.menuMode == .battleOver ? 0 : geometry.size.height)

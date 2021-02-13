@@ -36,6 +36,7 @@
 		25B094132595F50100C47477 /* PokemonAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B094122595F50100C47477 /* PokemonAnimation.swift */; };
 		25D20E8525D6AA2F00B6704D /* PokeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D20E8425D6AA2F00B6704D /* PokeUtil.swift */; };
 		25DCCDB925D7F41E00412D56 /* BattleOverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCCDB825D7F41E00412D56 /* BattleOverView.swift */; };
+		25DCCDBD25D853F300412D56 /* PokeCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DCCDBC25D853F300412D56 /* PokeCenter.swift */; };
 		25EFA21925D5A171002900A0 /* PokemonSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EFA21825D5A171002900A0 /* PokemonSelectionView.swift */; };
 		25EFA21C25D5A24F002900A0 /* PokemonSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EFA21B25D5A24F002900A0 /* PokemonSelectionViewModel.swift */; };
 		25EFA22025D5A31F002900A0 /* PokemonSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EFA21F25D5A31F002900A0 /* PokemonSelectionCard.swift */; };
@@ -74,6 +75,7 @@
 		25B094122595F50100C47477 /* PokemonAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAnimation.swift; sourceTree = "<group>"; };
 		25D20E8425D6AA2F00B6704D /* PokeUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeUtil.swift; sourceTree = "<group>"; };
 		25DCCDB825D7F41E00412D56 /* BattleOverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleOverView.swift; sourceTree = "<group>"; };
+		25DCCDBC25D853F300412D56 /* PokeCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeCenter.swift; sourceTree = "<group>"; };
 		25EFA21825D5A171002900A0 /* PokemonSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectionView.swift; sourceTree = "<group>"; };
 		25EFA21B25D5A24F002900A0 /* PokemonSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectionViewModel.swift; sourceTree = "<group>"; };
 		25EFA21F25D5A31F002900A0 /* PokemonSelectionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonSelectionCard.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				25D20E8425D6AA2F00B6704D /* PokeUtil.swift */,
+				25DCCDBC25D853F300412D56 /* PokeCenter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			files = (
 				25089D78254EC2B100FAC245 /* BattleEffect.swift in Sources */,
 				25089D6F254EA5AF00FAC245 /* LowerLimit.swift in Sources */,
+				25DCCDBD25D853F300412D56 /* PokeCenter.swift in Sources */,
 				253DB8C4254E98C1006A41AF /* MaxCount.swift in Sources */,
 				253DB8BD254E9783006A41AF /* Pokemon.swift in Sources */,
 				25089D90254F035200FAC245 /* BattleMainMenu.swift in Sources */,

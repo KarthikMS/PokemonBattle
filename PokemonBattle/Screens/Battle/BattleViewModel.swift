@@ -59,6 +59,7 @@ final class BattleViewModel: ObservableObject {
     // MARK: - Dependencies
     private let battle: Battle
     @Dependency private var commentator: Commentator
+    @Dependency private var pokeCenter: PokeCenter
     
     // MARK: - Init
     init(trainer1: PokemonTrainer, trainer2: PokemonTrainer) {
@@ -180,9 +181,23 @@ extension BattleViewModel {
         }
     }
     
+    func replayButtonPressed() {
+        pokeCenter.heal([pokemon1, pokemon2])
+        pokemon1FaintedAnimationEnabled = false
+        pokemon2FaintedAnimationEnabled = false
+        menuMode = .mainMenu
+    }
+    
+    func chooseNewPokemonButtonPressed() {
+        
+    }
+}
+
+// MARK: - Round processing
+private extension BattleViewModel {
     // TODO: Remove side-effects from this function.
     /// Returns shouldContinue
-    private func processRoundResult(stepResult: RoundResult) -> Bool {
+    func processRoundResult(stepResult: RoundResult) -> Bool {
         var didPokemonFaint = false
         if stepResult.didTrainer1PokemonFaint {
             commentator.comment("\(pokemon1.name) fainted!")
@@ -204,7 +219,7 @@ extension BattleViewModel {
         return didPokemonFaint
     }
     
-    private func handlePokemonFaint(stepResult: RoundResult) {
+    func handlePokemonFaint(stepResult: RoundResult) {
         self.battleOverViewTitle = stepResult.didTrainer1PokemonFaint ? "You lost!" : "You won!"
         self.battleOverViewButton1Text = stepResult.didTrainer1PokemonFaint ? "Retry" : "Play again"
         self.menuMode = .battleOver

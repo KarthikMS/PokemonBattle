@@ -38,6 +38,7 @@ final class BattleViewModel: ObservableObject {
     private var commentaryTimer: Timer?
     private var fullComment = ""
     private var commentaryCharIndex = 0
+    private var isCommenting = false
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -65,9 +66,6 @@ final class BattleViewModel: ObservableObject {
         
         listenToCommentator()
     }
-    
-    // MARK: - Temp
-    private let UserMessageReadTimeDuration = 1.5
 }
 
 // MARK: - Commentary
@@ -81,9 +79,16 @@ private extension BattleViewModel {
     }
     
     func showAnimatedComment(_ comment: String) {
-        self.fullComment = comment
+        guard !isCommenting else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAnimatedComment(comment)
+            }
+            return
+        }
         
         resetCommentary()
+        self.fullComment = comment
+        self.isCommenting = true
         
         commentaryTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
             guard let self = self else { return }
@@ -104,6 +109,7 @@ private extension BattleViewModel {
     func resetCommentary() {
         commentaryTimer?.invalidate()
         commentaryCharIndex = 0
+        isCommenting = false
     }
 }
 
@@ -156,10 +162,10 @@ extension BattleViewModel {
                 return
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + self.UserMessageReadTimeDuration) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
                 let step2Result = self.battle.performRoundStep2()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + self.UserMessageReadTimeDuration) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
                     if self.processRoundResult(stepResult: step2Result) {
                         return
                     }
@@ -186,7 +192,18 @@ extension BattleViewModel {
             pokemon2FaintedAnimationEnabled = true
             didPokemonFaint = true
         }
+        
+        if didPokemonFaint {
+            DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
+                self.handlePokemonFaint()
+            }
+        }
+        
         return didPokemonFaint
+    }
+    
+    private func handlePokemonFaint() {
+        self.menuMode = .battleOver
     }
 }
 

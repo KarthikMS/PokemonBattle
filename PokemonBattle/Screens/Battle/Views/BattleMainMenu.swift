@@ -12,6 +12,7 @@ struct BattleMainMenu: View {
         case mainMenu
         case attackMenu
         case attackAnimation
+        case battleOver
     }
     
     @ObservedObject var viewModel: BattleViewModel
@@ -77,8 +78,7 @@ struct BattleMainMenu: View {
                         print("Button 2 pressed")
                     }
                 )
-                // TODO: Fix offset condition
-                .offset(x: 0, y: viewModel.menuMode == .attackMenu ? 0 : geometry.size.height)
+                .offset(x: 0, y: viewModel.menuMode == .battleOver ? 0 : geometry.size.height)
             }
         }
     }

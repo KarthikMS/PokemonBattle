@@ -53,6 +53,8 @@ final class BattleViewModel: ObservableObject {
     @Published var pokemon1Animation: PokemonAnimation = .idle
     @Published var pokemon2Animation: PokemonAnimation = .idle
     @Published var commentaryDisplayText = ""
+    @Published var battleOverViewTitle = ""
+    @Published var battleOverViewButton1Text = ""
     
     // MARK: - Dependencies
     private let battle: Battle
@@ -195,14 +197,16 @@ extension BattleViewModel {
         
         if didPokemonFaint {
             DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
-                self.handlePokemonFaint()
+                self.handlePokemonFaint(stepResult: stepResult)
             }
         }
         
         return didPokemonFaint
     }
     
-    private func handlePokemonFaint() {
+    private func handlePokemonFaint(stepResult: RoundResult) {
+        self.battleOverViewTitle = stepResult.didTrainer1PokemonFaint ? "You lost!" : "You won!"
+        self.battleOverViewButton1Text = stepResult.didTrainer1PokemonFaint ? "Retry" : "Play again"
         self.menuMode = .battleOver
     }
 }

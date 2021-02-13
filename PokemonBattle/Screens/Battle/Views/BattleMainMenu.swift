@@ -68,8 +68,8 @@ struct BattleMainMenu: View {
                     }
                 }
                 BattleOverView(
-                    text: "You won!",
-                    button1Text: "Play again",
+                    text: viewModel.battleOverViewTitle,
+                    button1Text: viewModel.battleOverViewButton1Text,
                     button2Text: "Choose different pokemon",
                     button1Action: {
                         print("Button 1 pressed")

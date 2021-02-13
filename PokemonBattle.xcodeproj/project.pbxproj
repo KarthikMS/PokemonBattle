@@ -196,7 +196,7 @@
 				253DB8A7254E9739006A41AF /* PokemonBattleApp.swift */,
 				25089D73254EA91E00FAC245 /* AppDelegate.swift */,
 				253DB8D4254E9E6B006A41AF /* Constants.swift */,
-				25D20E8425D6AA2F00B6704D /* PokeUtil.swift */,
+				25DCCDBB25D853DA00412D56 /* Services */,
 				25089D9C254F346D00FAC245 /* DependencyContainer */,
 				25089D82254EDBA900FAC245 /* Screens */,
 				255BFC4D254EA04000A5CDB6 /* Battle */,
@@ -253,6 +253,14 @@
 				25089D77254EC2B100FAC245 /* BattleEffect.swift */,
 			);
 			path = Battle;
+			sourceTree = "<group>";
+		};
+		25DCCDBB25D853DA00412D56 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				25D20E8425D6AA2F00B6704D /* PokeUtil.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		25EFA21E25D5A309002900A0 /* Views */ = {

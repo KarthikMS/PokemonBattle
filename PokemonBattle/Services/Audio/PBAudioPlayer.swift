@@ -6,17 +6,21 @@
 //
 
 protocol PBAudioPlayer {
-    func loadAudio(named fileName: String, andPlay shouldPlay: Bool, withKillGuard: Bool)
+    func loadAudio(named fileName: String, andPlay shouldPlay: Bool, shouldRepeat: Bool, withKillGuard: Bool)
     func playLoadedAudio()
     func stopAudio()
 }
 
 extension PBAudioPlayer {
     func loadAudio(named fileName: String) {
-        loadAudio(named: fileName, andPlay: false, withKillGuard: true)
+        loadAudio(named: fileName, andPlay: false)
     }
     
     func loadAudio(named fileName: String, andPlay shouldPlay: Bool) {
-        loadAudio(named: fileName, andPlay: shouldPlay, withKillGuard: true)
+        loadAudio(named: fileName, andPlay: shouldPlay, shouldRepeat: false)
+    }
+    
+    func loadAudio(named fileName: String, andPlay shouldPlay: Bool, shouldRepeat: Bool) {
+        loadAudio(named: fileName, andPlay: shouldPlay, shouldRepeat: shouldRepeat, withKillGuard: true)
     }
 }

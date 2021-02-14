@@ -23,7 +23,7 @@ final class PokemonSelectionViewModel: ObservableObject {
 extension PokemonSelectionViewModel {
     func playBGMusic() {
         DispatchQueue.global(qos: .background).async {
-            self.bgAudioPlayer.loadAudio(named: "Pokemon_Selection_Theme", andPlay: true)
+            self.bgAudioPlayer.loadAudio(named: "Pokemon_Selection_Theme", andPlay: true, shouldRepeat: true)
         }
     }
     

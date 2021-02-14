@@ -11,6 +11,7 @@
 		2506C79425D926A30005022D /* Pokémon_Battle_Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2506C79325D926A30005022D /* Pokémon_Battle_Theme.mp3 */; };
 		2506C79725D927450005022D /* PBAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506C79625D927450005022D /* PBAudioPlayer.swift */; };
 		2506C79A25D92BBA0005022D /* Pokemon_Selection_Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2506C79925D92BBA0005022D /* Pokemon_Selection_Theme.mp3 */; };
+		2506C79D25D946410005022D /* Pokemon_Battle_Won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */; };
 		25089D6F254EA5AF00FAC245 /* LowerLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25089D6E254EA5AF00FAC245 /* LowerLimit.swift */; };
 		25089D74254EA91E00FAC245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25089D73254EA91E00FAC245 /* AppDelegate.swift */; };
 		25089D78254EC2B100FAC245 /* BattleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25089D77254EC2B100FAC245 /* BattleEffect.swift */; };
@@ -52,6 +53,7 @@
 		2506C79325D926A30005022D /* Pokémon_Battle_Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pokémon_Battle_Theme.mp3"; sourceTree = "<group>"; };
 		2506C79625D927450005022D /* PBAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBAudioPlayer.swift; sourceTree = "<group>"; };
 		2506C79925D92BBA0005022D /* Pokemon_Selection_Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pokemon_Selection_Theme.mp3; sourceTree = "<group>"; };
+		2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pokemon_Battle_Won.mp3; sourceTree = "<group>"; };
 		25089D6E254EA5AF00FAC245 /* LowerLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerLimit.swift; sourceTree = "<group>"; };
 		25089D73254EA91E00FAC245 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25089D77254EC2B100FAC245 /* BattleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEffect.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				2506C79325D926A30005022D /* Pokémon_Battle_Theme.mp3 */,
 				2506C79925D92BBA0005022D /* Pokemon_Selection_Theme.mp3 */,
+				2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */,
 			);
 			path = Audios;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				2506C79A25D92BBA0005022D /* Pokemon_Selection_Theme.mp3 in Resources */,
 				253DB8AF254E973C006A41AF /* Preview Assets.xcassets in Resources */,
 				253DB8AC254E973C006A41AF /* Assets.xcassets in Resources */,
+				2506C79D25D946410005022D /* Pokemon_Battle_Won.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

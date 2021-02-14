@@ -27,7 +27,7 @@ final class BGAudioPlayer: PBAudioPlayer {
 
 // MARK: - PBAudioPlayer
 extension BGAudioPlayer {
-    func loadAudio(named fileName: String, andPlay shouldPlay: Bool = false, withKillGuard: Bool) {
+    func loadAudio(named fileName: String, andPlay shouldPlay: Bool = false, shouldRepeat: Bool = false, withKillGuard: Bool) {
         do {
             let path = Bundle.main.path(forResource: fileName, ofType: "mp3")!
             let url = URL(fileURLWithPath: path)
@@ -39,6 +39,7 @@ extension BGAudioPlayer {
                     enableKillGuard()
                 }
                 audioPlayer?.play()
+                audioPlayer?.numberOfLoops = shouldRepeat ? -1 : 0
             }
         } catch {
             assertionFailure(error.localizedDescription)

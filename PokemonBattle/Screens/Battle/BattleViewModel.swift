@@ -121,7 +121,7 @@ private extension BattleViewModel {
 extension BattleViewModel {
     func playBGMusic() {
         DispatchQueue.global(qos: .background).async {
-            self.bgAudioPlayer.loadAudio(named: "Pokémon_Battle_Theme", andPlay: true)
+            self.bgAudioPlayer.loadAudio(named: "Pokémon_Battle_Theme", andPlay: true, shouldRepeat: true)
         }
     }
     

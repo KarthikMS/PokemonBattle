@@ -125,15 +125,15 @@ extension BattleViewModel {
     }
     
     func playBGMusic() {
-        DispatchQueue.global(qos: .background).async {
-            self.bgAudioPlayer.loadAudio(named: "Pokémon_Battle_Theme", andPlay: true, shouldRepeat: true)
-        }
+        bgAudioPlayer.loadAudio(
+            named: "Pokémon_Battle_Theme",
+            andPlay: true,
+            shouldRepeat: true
+        )
     }
     
     func stopBGMusic() {
-        DispatchQueue.global(qos: .background).async {
-            self.bgAudioPlayer.stopAudio()
-        }
+        bgAudioPlayer.stopAudio()
     }
     
     func performAttack(withID attackID: String) {

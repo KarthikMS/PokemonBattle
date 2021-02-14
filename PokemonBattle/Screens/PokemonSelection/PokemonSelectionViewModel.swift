@@ -22,15 +22,11 @@ final class PokemonSelectionViewModel: ObservableObject {
 // MARK: - View Intents
 extension PokemonSelectionViewModel {
     func playBGMusic() {
-        DispatchQueue.global(qos: .background).async {
-            self.bgAudioPlayer.loadAudio(named: "Pokemon_Selection_Theme", andPlay: true, shouldRepeat: true)
-        }
+        bgAudioPlayer.loadAudio(named: "Pokemon_Selection_Theme", andPlay: true, shouldRepeat: true)
     }
     
     func stopBGMusic() {
-        DispatchQueue.global(qos: .background).async {
-            self.bgAudioPlayer.stopAudio()
-        }
+        bgAudioPlayer.stopAudio()
     }
 }
 

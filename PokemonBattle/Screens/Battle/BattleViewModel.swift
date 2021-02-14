@@ -75,8 +75,8 @@ final class BattleViewModel: ObservableObject {
 private extension BattleViewModel {
     func listenToCommentator() {
         commentator.commentStream
-            .sink { comment in
-                self.showAnimatedComment(comment)
+            .sink { [weak self] comment in
+                self?.showAnimatedComment(comment)
             }
             .store(in: &cancellables)
     }
@@ -189,7 +189,7 @@ extension BattleViewModel {
     }
     
     func chooseNewPokemonButtonPressed() {
-        
+        pokeCenter.heal([pokemon1, pokemon2])
     }
 }
 

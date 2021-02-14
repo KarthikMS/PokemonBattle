@@ -16,6 +16,7 @@ struct BattleMainMenu: View {
     }
     
     @ObservedObject var viewModel: BattleViewModel
+    @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         GeometryReader { geometry in
@@ -45,7 +46,9 @@ struct BattleMainMenu: View {
                                 menu3Title: "Pokemon",
                                 menu3Action: { print("Pokemon") },
                                 menu4Title: "Run",
-                                menu4Action: { print("Run") }
+                                menu4Action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
                             )
                         }
                         
@@ -76,6 +79,7 @@ struct BattleMainMenu: View {
                     },
                     button2Action: {
                         viewModel.chooseNewPokemonButtonPressed()
+                        presentationMode.wrappedValue.dismiss()
                     }
                 )
                 .offset(x: 0, y: viewModel.menuMode == .battleOver ? 0 : geometry.size.height)

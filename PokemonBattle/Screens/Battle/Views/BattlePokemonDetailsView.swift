@@ -32,9 +32,9 @@ final class BattlePokemonDetailsViewModel: ObservableObject {
     private func observeHealth(of pokemon: Pokemon) {
         pokemon.$currentHP
             .receive(on: DispatchQueue.main)
-            .sink { currentHealth in
-                self.healthText = "\(currentHealth) / \(pokemon.maxHP)"
-                self.currentHP = Float(currentHealth)
+            .sink { [weak self] currentHealth in
+                self?.healthText = "\(currentHealth) / \(pokemon.maxHP)"
+                self?.currentHP = Float(currentHealth)
             }
             .store(in: &cancellables)
     }

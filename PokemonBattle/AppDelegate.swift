@@ -23,8 +23,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             .inObjectScope(.container)
         dependencyContainer.register(PokeCenter.self, factory: { _ in PokemonCenter() })
             .inObjectScope(.container)
-        dependencyContainer.register(PBAudioPlayer.self, name: "bgAudioPlayer", factory: { _ in BGAudioPlayer() })
+        dependencyContainer.register(PBAudioPlayer.self, name: "bgAudioPlayer", factory: { _ in PBAudioPlayerImpl() })
             .inObjectScope(.container)
+        dependencyContainer.register(PBAudioPlayer.self, name: "pokemonAudioPlayer", factory: { _ in PBAudioPlayerImpl() })
     }
 }
 

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2506C78E25D924D00005022D /* BGAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506C78D25D924D00005022D /* BGAudioPlayer.swift */; };
+		2506C78E25D924D00005022D /* PBAudioPlayerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506C78D25D924D00005022D /* PBAudioPlayerImpl.swift */; };
 		2506C79425D926A30005022D /* Pokémon_Battle_Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2506C79325D926A30005022D /* Pokémon_Battle_Theme.mp3 */; };
 		2506C79725D927450005022D /* PBAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2506C79625D927450005022D /* PBAudioPlayer.swift */; };
 		2506C79A25D92BBA0005022D /* Pokemon_Selection_Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2506C79925D92BBA0005022D /* Pokemon_Selection_Theme.mp3 */; };
 		2506C79D25D946410005022D /* Pokemon_Battle_Won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */; };
+		2506C7A325D949520005022D /* Pokemon_Attack_Damange_Infliction.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2506C7A225D949520005022D /* Pokemon_Attack_Damange_Infliction.wav */; };
 		25089D6F254EA5AF00FAC245 /* LowerLimit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25089D6E254EA5AF00FAC245 /* LowerLimit.swift */; };
 		25089D74254EA91E00FAC245 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25089D73254EA91E00FAC245 /* AppDelegate.swift */; };
 		25089D78254EC2B100FAC245 /* BattleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25089D77254EC2B100FAC245 /* BattleEffect.swift */; };
@@ -49,11 +50,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2506C78D25D924D00005022D /* BGAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGAudioPlayer.swift; sourceTree = "<group>"; };
+		2506C78D25D924D00005022D /* PBAudioPlayerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBAudioPlayerImpl.swift; sourceTree = "<group>"; };
 		2506C79325D926A30005022D /* Pokémon_Battle_Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pokémon_Battle_Theme.mp3"; sourceTree = "<group>"; };
 		2506C79625D927450005022D /* PBAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBAudioPlayer.swift; sourceTree = "<group>"; };
 		2506C79925D92BBA0005022D /* Pokemon_Selection_Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pokemon_Selection_Theme.mp3; sourceTree = "<group>"; };
 		2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Pokemon_Battle_Won.mp3; sourceTree = "<group>"; };
+		2506C7A225D949520005022D /* Pokemon_Attack_Damange_Infliction.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pokemon_Attack_Damange_Infliction.wav; sourceTree = "<group>"; };
 		25089D6E254EA5AF00FAC245 /* LowerLimit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerLimit.swift; sourceTree = "<group>"; };
 		25089D73254EA91E00FAC245 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25089D77254EC2B100FAC245 /* BattleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BattleEffect.swift; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 		2506C78C25D924B50005022D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				2506C78D25D924D00005022D /* BGAudioPlayer.swift */,
+				2506C78D25D924D00005022D /* PBAudioPlayerImpl.swift */,
 				2506C79625D927450005022D /* PBAudioPlayer.swift */,
 			);
 			path = Audio;
@@ -127,6 +129,7 @@
 		2506C79225D926930005022D /* Audios */ = {
 			isa = PBXGroup;
 			children = (
+				2506C7A125D949450005022D /* PokemonSounds */,
 				2506C79F25D9492E0005022D /* BGMs */,
 			);
 			path = Audios;
@@ -140,6 +143,14 @@
 				2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */,
 			);
 			path = BGMs;
+			sourceTree = "<group>";
+		};
+		2506C7A125D949450005022D /* PokemonSounds */ = {
+			isa = PBXGroup;
+			children = (
+				2506C7A225D949520005022D /* Pokemon_Attack_Damange_Infliction.wav */,
+			);
+			path = PokemonSounds;
 			sourceTree = "<group>";
 		};
 		25089D6D254EA58000FAC245 /* Extensions */ = {
@@ -402,6 +413,7 @@
 				2506C79A25D92BBA0005022D /* Pokemon_Selection_Theme.mp3 in Resources */,
 				253DB8AF254E973C006A41AF /* Preview Assets.xcassets in Resources */,
 				253DB8AC254E973C006A41AF /* Assets.xcassets in Resources */,
+				2506C7A325D949520005022D /* Pokemon_Attack_Damange_Infliction.wav in Resources */,
 				2506C79D25D946410005022D /* Pokemon_Battle_Won.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,7 +490,7 @@
 				25089D9E254F347600FAC245 /* Dependency.swift in Sources */,
 				253DB8CD254E9ACC006A41AF /* PokemonTrainer.swift in Sources */,
 				25EFA22025D5A31F002900A0 /* PokemonSelectionCard.swift in Sources */,
-				2506C78E25D924D00005022D /* BGAudioPlayer.swift in Sources */,
+				2506C78E25D924D00005022D /* PBAudioPlayerImpl.swift in Sources */,
 				255BFC4F254EA04C00A5CDB6 /* Pokemon+Battle.swift in Sources */,
 				25089DA4254F371300FAC245 /* BattlefieldView.swift in Sources */,
 				253DB8B9254E9767006A41AF /* ElementType.swift in Sources */,

@@ -61,6 +61,7 @@ final class BattleViewModel: ObservableObject {
     @Dependency private var commentator: Commentator
     @Dependency private var pokeCenter: PokeCenter
     @Dependency(name: "bgAudioPlayer") private var bgAudioPlayer: PBAudioPlayer
+    @Dependency(name: "pokemonAudioPlayer") private var pokemonAudioPlayer: PBAudioPlayer
     
     // MARK: - Init
     init(trainer1: PokemonTrainer, trainer2: PokemonTrainer) {
@@ -172,6 +173,7 @@ extension BattleViewModel {
         // 2.
         let step1Result = battle.performRoundStep1()
         menuMode = .attackAnimation
+        pokemonAudioPlayer.loadAudio(named: "Pokemon_Attack_Damange_Infliction", andPlay: true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
             if self.processRoundResult(stepResult: step1Result) {
@@ -180,6 +182,7 @@ extension BattleViewModel {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
                 let step2Result = self.battle.performRoundStep2()
+                self.pokemonAudioPlayer.loadAudio(named: "Pokemon_Attack_Damange_Infliction", andPlay: true)
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
                     if self.processRoundResult(stepResult: step2Result) {

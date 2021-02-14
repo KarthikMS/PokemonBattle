@@ -1,5 +1,5 @@
 //
-//  BGAudioPlayer.swift
+//  PBAudioPlayerImpl.swift
 //  PokemonBattle
 //
 //  Created by Karthik on 14/02/21.
@@ -7,7 +7,7 @@
 
 import AVFoundation
 
-final class BGAudioPlayer: PBAudioPlayer {
+final class PBAudioPlayerImpl: PBAudioPlayer {
     // MARK: - Properties
     private let killGuardTime: Double
     private var audioPlayer: AVAudioPlayer?
@@ -26,10 +26,19 @@ final class BGAudioPlayer: PBAudioPlayer {
 }
 
 // MARK: - PBAudioPlayer
-extension BGAudioPlayer {
+extension PBAudioPlayerImpl {
     func loadAudio(named fileName: String, andPlay shouldPlay: Bool = false, shouldRepeat: Bool = false, withKillGuard: Bool) {
         do {
-            let path = Bundle.main.path(forResource: fileName, ofType: "mp3")!
+            let path: String
+            
+            if let mp3Path = Bundle.main.path(forResource: fileName, ofType: "mp3") {
+                path = mp3Path
+            } else if let wavPath = Bundle.main.path(forResource: fileName, ofType: "wav") {
+                path = wavPath
+            } else {
+                return
+            }            
+            
             let url = URL(fileURLWithPath: path)
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             
@@ -61,7 +70,7 @@ extension BGAudioPlayer {
 }
 
 // MARK: - Kill Guard
-private extension BGAudioPlayer {
+private extension PBAudioPlayerImpl {
     func enableKillGuard() {
         DispatchQueue.main.asyncAfter(deadline: .now() + killGuardTime) {
             self.canKill = true

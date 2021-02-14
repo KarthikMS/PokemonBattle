@@ -228,6 +228,8 @@ private extension BattleViewModel {
         }
         
         if didPokemonFaint {
+            pokemonAudioPlayer.loadAudio(named: "Pokemon_Fainted", andPlay: true)
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
                 self.handlePokemonFaint(stepResult: stepResult)
                 

@@ -127,11 +127,19 @@
 		2506C79225D926930005022D /* Audios */ = {
 			isa = PBXGroup;
 			children = (
+				2506C79F25D9492E0005022D /* BGMs */,
+			);
+			path = Audios;
+			sourceTree = "<group>";
+		};
+		2506C79F25D9492E0005022D /* BGMs */ = {
+			isa = PBXGroup;
+			children = (
 				2506C79325D926A30005022D /* Pokémon_Battle_Theme.mp3 */,
 				2506C79925D92BBA0005022D /* Pokemon_Selection_Theme.mp3 */,
 				2506C79C25D946410005022D /* Pokemon_Battle_Won.mp3 */,
 			);
-			path = Audios;
+			path = BGMs;
 			sourceTree = "<group>";
 		};
 		25089D6D254EA58000FAC245 /* Extensions */ = {

@@ -32,10 +32,9 @@ struct BattleMainMenu: View {
                         width: geometry.size.width,
                         height: 0.8 * geometry.size.height
                     )
-                    .background(Color.red)
                     
                     ZStack {
-                        Color.green
+//                        Color.green
                         
                         if viewModel.menuMode == .mainMenu {
                             BattleMenu(

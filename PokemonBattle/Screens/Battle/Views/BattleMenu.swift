@@ -20,27 +20,37 @@ struct BattleMenu: View {
     let menu4Title: String
     let menu4Action: () -> Void
     
+    let buttonCenterColor = Color(UIColor.darkGray)
+    let buttonBorderColor = Color(UIColor.lightGray)
+    let buttonBorderWidth: CGFloat = 15
+    
     var body: some View {
         GeometryReader { g in
             VStack {
                 HStack {
                     Button(menu1Title, action: menu1Action)
-                        .frame(width: 0.5 * g.size.width)
+                        .frame(width: 0.5 * g.size.width,
+                               height: 0.5 * g.size.height)
+                        .border(buttonBorderColor, width: buttonBorderWidth)
                     Button(menu2Title, action: menu2Action)
-                        .frame(width: 0.5 * g.size.width)
+                        .frame(width: 0.5 * g.size.width,
+                               height: 0.5 * g.size.height)
+                        .border(buttonBorderColor, width: buttonBorderWidth)
                 }
-                .padding([.top, .bottom])
                 HStack {
                     Button(menu3Title, action: menu3Action)
-                        .frame(width: 0.5 * g.size.width)
+                        .frame(width: 0.5 * g.size.width,
+                               height: 0.5 * g.size.height)
+                        .border(buttonBorderColor, width: buttonBorderWidth)
                     Button(menu4Title, action: menu4Action)
-                        .frame(width: 0.5 * g.size.width)
+                        .frame(width: 0.5 * g.size.width,
+                               height: 0.5 * g.size.height)
+                        .border(buttonBorderColor, width: buttonBorderWidth)
                 }
-                .padding([.top, .bottom])
             }
             .font(.title2)
-            .foregroundColor(Color.black)
-            .border(Color.red, width: 2)
+            .foregroundColor(Color.white)
+            .background(buttonCenterColor)
         }
     }
 }

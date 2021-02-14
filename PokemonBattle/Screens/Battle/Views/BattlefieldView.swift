@@ -13,30 +13,45 @@ struct BattlefieldView: View {
     @ObservedObject var viewModel: BattleViewModel
     
     var body: some View {
-        VStack {
-            HStack {
-                BattlePokemonDetailsView(
-                    viewModel: BattlePokemonDetailsViewModel(
-                        pokemon: pokemon2
+        ZStack {
+            Image("Battlefield_Forest")
+                .resizable()
+            VStack {
+                Spacer(minLength: 40)
+                
+                HStack {
+                    BattlePokemonDetailsView(
+                        viewModel: BattlePokemonDetailsViewModel(
+                            pokemon: pokemon2
+                        )
                     )
-                )
-                PokemonView(pokemon: pokemon2)
-                    .frame(width: 90, height: 90)
-                    .opacity(viewModel.pokemon2FaintedAnimationEnabled ? 0 : 1)
-                    .animation(viewModel.pokemon2FaintedAnimationEnabled ? .default : .none)
-                    .modifier(PokemonAnimationViewModifier(pokemonAnimation: viewModel.pokemon2Animation))
-            }
-            HStack {
-                PokemonView(pokemon: pokemon1)
-                    .frame(width: 90, height: 90)
-                    .opacity(viewModel.pokemon1FaintedAnimationEnabled ? 0 : 1)
-                    .animation(viewModel.pokemon1FaintedAnimationEnabled ? .default : .none)
-                    .modifier(PokemonAnimationViewModifier(pokemonAnimation: viewModel.pokemon1Animation))
-                BattlePokemonDetailsView(
-                    viewModel: BattlePokemonDetailsViewModel(
-                        pokemon: pokemon1
+                    PokemonView(pokemon: pokemon2)
+                        .frame(width: 90, height: 90)
+                        .opacity(viewModel.pokemon2FaintedAnimationEnabled ? 0 : 1)
+                        .animation(viewModel.pokemon2FaintedAnimationEnabled ? .default : .none)
+                        .modifier(PokemonAnimationViewModifier(pokemonAnimation: viewModel.pokemon2Animation))
+                        .padding(15)
+                }
+                .background(Color.white)
+                
+                Spacer(minLength: 40)
+                
+                HStack {
+                    PokemonView(pokemon: pokemon1)
+                        .frame(width: 90, height: 90)
+                        .opacity(viewModel.pokemon1FaintedAnimationEnabled ? 0 : 1)
+                        .animation(viewModel.pokemon1FaintedAnimationEnabled ? .default : .none)
+                        .modifier(PokemonAnimationViewModifier(pokemonAnimation: viewModel.pokemon1Animation))
+                        .padding(15)
+                    BattlePokemonDetailsView(
+                        viewModel: BattlePokemonDetailsViewModel(
+                            pokemon: pokemon1
+                        )
                     )
-                )
+                }
+                .background(Color.white)
+                
+                Spacer(minLength: 40)
             }
         }
     }

@@ -90,7 +90,7 @@ struct BattleMainMenu: View {
             viewModel.playPokeBallOpenSound()
         }
         .onDisappear {
-            viewModel.stopBGMusic()
+//            viewModel.stopBGMusic()
         }
     }
 }

@@ -37,7 +37,7 @@ struct PokemonSelectionView: View {
                 viewModel.playBGMusic()
             }
             .onDisappear {
-                viewModel.stopBGMusic()
+//                viewModel.stopBGMusic()
             }
         }
     }

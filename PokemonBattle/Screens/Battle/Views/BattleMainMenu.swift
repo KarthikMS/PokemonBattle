@@ -34,7 +34,7 @@ struct BattleMainMenu: View {
                     )
                     
                     ZStack {
-//                        Color.green
+                        Color.white
                         
                         if viewModel.menuMode == .mainMenu {
                             BattleMenu(
@@ -91,6 +91,7 @@ struct BattleMainMenu: View {
         .onDisappear {
 //            viewModel.stopBGMusic()
         }
+        .ignoresSafeArea()
     }
 }
 

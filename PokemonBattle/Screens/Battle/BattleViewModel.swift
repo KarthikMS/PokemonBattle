@@ -120,6 +120,10 @@ private extension BattleViewModel {
 
 // MARK: - View Inputs
 extension BattleViewModel {
+    func playPokeBallOpenSound() {
+        pokemonAudioPlayer.loadAudio(named: "PokeBallOpen", andPlay: true)
+    }
+    
     func playBGMusic() {
         DispatchQueue.global(qos: .background).async {
             self.bgAudioPlayer.loadAudio(named: "Pokémon_Battle_Theme", andPlay: true, shouldRepeat: true)
@@ -235,6 +239,8 @@ private extension BattleViewModel {
                 
                 if stepResult.didTrainer2PokemonFaint {
                     self.bgAudioPlayer.loadAudio(named: "Pokemon_Battle_Won", andPlay: true, shouldRepeat: true)
+                } else {
+                    self.bgAudioPlayer.stopAudio()
                 }
             }
         }

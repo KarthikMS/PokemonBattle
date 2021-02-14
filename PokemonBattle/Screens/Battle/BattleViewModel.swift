@@ -199,6 +199,7 @@ extension BattleViewModel {
         pokemon1FaintedAnimationEnabled = false
         pokemon2FaintedAnimationEnabled = false
         menuMode = .mainMenu
+        playBGMusic()
     }
     
     func chooseNewPokemonButtonPressed() {
@@ -226,6 +227,10 @@ private extension BattleViewModel {
         if didPokemonFaint {
             DispatchQueue.main.asyncAfter(deadline: .now() + UserMessageReadTimeDuration) {
                 self.handlePokemonFaint(stepResult: stepResult)
+                
+                if stepResult.didTrainer2PokemonFaint {
+                    self.bgAudioPlayer.loadAudio(named: "Pokemon_Battle_Won", andPlay: true, shouldRepeat: true)
+                }
             }
         }
         

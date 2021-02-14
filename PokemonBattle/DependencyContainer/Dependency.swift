@@ -11,7 +11,11 @@ import Swinject
 class Dependency<T> {
     let wrappedValue: T
     
-    init(container: Container = dependencyContainer) {
-        wrappedValue = container.resolve(T.self)!
+    init(container: Container = dependencyContainer, name: String? = nil) {
+        if let name = name {
+            wrappedValue = container.resolve(T.self, name: name)!
+        } else {
+            wrappedValue = container.resolve(T.self)!
+        }
     }
 }

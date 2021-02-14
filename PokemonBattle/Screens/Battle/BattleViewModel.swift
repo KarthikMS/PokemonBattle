@@ -60,6 +60,7 @@ final class BattleViewModel: ObservableObject {
     private let battle: Battle
     @Dependency private var commentator: Commentator
     @Dependency private var pokeCenter: PokeCenter
+    @Dependency(name: "bgAudioPlayer") private var bgAudioPlayer: PBAudioPlayer
     
     // MARK: - Init
     init(trainer1: PokemonTrainer, trainer2: PokemonTrainer) {
@@ -118,6 +119,18 @@ private extension BattleViewModel {
 
 // MARK: - View Inputs
 extension BattleViewModel {
+    func playBGMusic() {
+        DispatchQueue.global(qos: .background).async {
+            self.bgAudioPlayer.loadAudio(named: "Pokémon_Battle_Theme", andPlay: true)
+        }
+    }
+    
+    func stopBGMusic() {
+        DispatchQueue.global(qos: .background).async {
+            self.bgAudioPlayer.stopAudio()
+        }
+    }
+    
     func performAttack(withID attackID: String) {
         menuMode = .attackAnimation
 

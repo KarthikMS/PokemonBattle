@@ -8,12 +8,34 @@
 import SwiftUI
 
 final class PokemonSelectionViewModel: ObservableObject {
+    // MARK: - Dependencies
+    @Dependency(name: "bgAudioPlayer") private var bgAudioPlayer: PBAudioPlayer
+    
+    // MARK: - Properties
     var pokemons = [
         StarterPokemon.charmander,
         StarterPokemon.mudkip,
         StarterPokemon.bulbasaur
     ]
+}
+
+// MARK: - View Intents
+extension PokemonSelectionViewModel {
+    func playBGMusic() {
+        DispatchQueue.global(qos: .background).async {
+            self.bgAudioPlayer.loadAudio(named: "Pokemon_Selection_Theme", andPlay: true)
+        }
+    }
     
+    func stopBGMusic() {
+        DispatchQueue.global(qos: .background).async {
+            self.bgAudioPlayer.stopAudio()
+        }
+    }
+}
+
+// MARK: - View Inputs
+extension PokemonSelectionViewModel {
     func getPokemonTrainerWithPokemon(_ pokemon: Pokemon) -> PokemonTrainer {
         PokemonTrainer(name: "Ash", pokemons: [pokemon])
     }

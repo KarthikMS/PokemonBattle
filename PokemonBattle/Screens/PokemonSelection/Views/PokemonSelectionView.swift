@@ -33,6 +33,12 @@ struct PokemonSelectionView: View {
                 }
             }
             .background(Color.yellow)
+            .onAppear {
+                viewModel.playBGMusic()
+            }
+            .onDisappear {
+                viewModel.stopBGMusic()
+            }
         }
     }
 }

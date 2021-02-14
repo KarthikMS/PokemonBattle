@@ -85,6 +85,12 @@ struct BattleMainMenu: View {
                 .offset(x: 0, y: viewModel.menuMode == .battleOver ? 0 : geometry.size.height)
             }
         }
+        .onAppear {
+            viewModel.playBGMusic()
+        }
+        .onDisappear {
+            viewModel.stopBGMusic()
+        }
     }
 }
 

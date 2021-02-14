@@ -8,4 +8,5 @@
 let MaxNumberOfPokemon = 6
 let MaxNumberOfPokemonMoves = 4
 
+// Commentary
 let UserMessageReadTimeDuration = 1.5
